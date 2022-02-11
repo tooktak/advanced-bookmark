@@ -12,6 +12,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - 
-      name: Run eslint
-      run: ls
+    - uses: actions/checkout@v2
+    - name: Run eslint
+      run: docker run --rm -v $(pwd):/data cytopia/eslint .
