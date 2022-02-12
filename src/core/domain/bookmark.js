@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-use-before-define
+/* eslint-disable */
 class Bookmark {
     constructor(id, url) {
         this.id = id
