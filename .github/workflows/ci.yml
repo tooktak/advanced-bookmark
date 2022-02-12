@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run eslint
+      run: npm install @typescript-eslint/eslint-plugin@latest --save-dev && docker run --rm -v $(pwd):/data cytopia/eslint .
