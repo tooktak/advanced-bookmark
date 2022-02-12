@@ -1,3 +1,4 @@
+// nolint
 class Bookmark {
     constructor(id, url) {
         this.id = id
