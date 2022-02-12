@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run eslint
-      run: docker run --rm -v $(pwd):/data cytopia/eslint .
+      run: npm install @typescript-eslint/eslint-plugin@latest --save-dev && docker run --rm -v $(pwd):/data cytopia/eslint .
