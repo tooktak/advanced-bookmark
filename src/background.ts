@@ -1,6 +1,4 @@
-function polling() {
-  console.log("polling");
-  setTimeout(polling, 1000 * 30);
-}
+import { createBookmark } from "./core/application/bookmark/createBookmark";
 
-polling();
+console.log(createBookmark(undefined, "1", "http://www.naver.com"))
+

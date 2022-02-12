@@ -26,7 +26,7 @@
   },
 
   "permissions": [
-    "storage"
+    "bookmarks"
   ],
 
   "host_permissions": [
