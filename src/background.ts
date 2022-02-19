@@ -1,4 +1,9 @@
-import { createBookmark } from "./core/application/bookmark/createBookmark";
+import {createBookmark} from "src/core/presentation/bookmark/createBookmark";
+import {Bookmark} from "src/core/domain/bookmark/bookmark";
 
-console.log(createBookmark(undefined, "1", "http://www.naver.com"))
-
+(async () => {
+    const bookmark: Bookmark | Error = await createBookmark(undefined, "naver", "www.naver.com")
+    if (bookmark instanceof  Error) {
+        console.log(bookmark)
+    }
+})()
