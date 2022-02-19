@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
-const Options = () => {
+const ContentScript = () => {
   const [color, setColor] = useState<string>("");
   const [status, setStatus] = useState<string>("");
   const [like, setLike] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(chrome);
     // Restores select box and checkbox state using the preferences
     // stored in chrome.storage.
     chrome.storage.sync.get(
       {
         favoriteColor: "red",
-        likesColor: true,
+        likesColor: true
       },
       (items) => {
         setColor(items.favoriteColor);
@@ -26,7 +27,7 @@ const Options = () => {
     chrome.storage.sync.set(
       {
         favoriteColor: color,
-        likesColor: like,
+        likesColor: like
       },
       () => {
         // Update status to let user know options were saved.
@@ -43,14 +44,14 @@ const Options = () => {
     <>
       <div>
         Favorite color: <select
-          value={color}
-          onChange={(event) => setColor(event.target.value)}
-        >
-          <option value="red">red</option>
-          <option value="green">green</option>
-          <option value="blue">blue</option>
-          <option value="yellow">yellow</option>
-        </select>
+        value={color}
+        onChange={(event) => setColor(event.target.value)}
+      >
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="yellow">yellow</option>
+      </select>
       </div>
       <div>
         <label>
@@ -68,9 +69,24 @@ const Options = () => {
   );
 };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Options />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const render = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <ContentScript />
+    </React.StrictMode>,
+    document.getElementById("extension_react_root")
+  );
+};
+
+const init = () => {
+  const $body = document.querySelector("body");
+
+  if ($body) {
+    const $extensionRoot = document.createElement("div");
+    $extensionRoot.setAttribute("id", "extension_react_root");
+    $body.insertAdjacentElement("beforeend", $extensionRoot);
+    render();
+  }
+};
+
+init();

@@ -5,9 +5,7 @@
   "description": "Searchable Advanced Bookmark",
   "version": "1.0.0",
 
-  "options_ui": {
-    "page": "options.html"
-  },
+  "options_page": "options.html",
 
   "action": {
     "default_icon": "icon.png",
@@ -26,7 +24,7 @@
   },
 
   "permissions": [
-    "bookmarks"
+    "bookmarks", "storage"
   ],
 
   "host_permissions": [
