@@ -5,3 +5,7 @@ export async function createBookmarkUsecase(parentID: string | undefined, title:
     const tmpBookmark = new Bookmark(parentID, undefined, title, url)
     return await bookmarkRepositoryImpl.createBookmark(tmpBookmark)
 }
+
+export async function listAllBookmarksUsecase(): Promise<Bookmark[] | Error> {
+    return await bookmarkRepositoryImpl.listAllBookmarks()
+}
