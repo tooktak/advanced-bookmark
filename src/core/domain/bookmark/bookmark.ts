@@ -1,21 +1,21 @@
 export class Bookmark {
-    private _parentID?: string;
-    private _id: string;
+    private _parentId?: string;
+    private _id?: string;
     private _title: string;
     private _url?: string;
 
-    constructor(parentID: string | undefined, id: string, title: string, url: string | undefined) {
-        this._parentID = parentID
+    constructor(parentID: string | undefined, id: string | undefined, title: string, url: string | undefined) {
+        this._parentId = parentID
         this._id = id;
         this._title = title;
         this._url = url;
     }
 
-    get parentID(): string | undefined {
-        return this._parentID;
+    get parentId(): string | undefined {
+        return this._parentId;
     }
 
-    get id(): string {
+    get id(): string | undefined {
         return this._id;
     }
 

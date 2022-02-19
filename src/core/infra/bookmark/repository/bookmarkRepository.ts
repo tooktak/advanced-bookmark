@@ -2,16 +2,16 @@ import {BookmarkRepository} from "src/core/domain/bookmark/bookmarkRepository";
 import {Bookmark} from "src/core/domain/bookmark/bookmark";
 
 class BookmarkRepositoryImpl implements BookmarkRepository {
-    async createBookmark(parentID: string | undefined, title: string, url: string | undefined): Promise<Bookmark | Error> {
+    async createBookmark(bookmark: Bookmark): Promise<Bookmark | Error> {
         try {
-            const bookmark: chrome.bookmarks.BookmarkTreeNode = await chrome.bookmarks.create(
+            const bm: chrome.bookmarks.BookmarkTreeNode = await chrome.bookmarks.create(
                 {
-                    parentId: parentID,
-                    title: title,
-                    url: url,
+                    parentId: bookmark.parentId,
+                    title: bookmark.title,
+                    url: bookmark.url,
                 }
             )
-            return new Bookmark(bookmark.parentId, bookmark.id, bookmark.title, bookmark.url)
+            return new Bookmark(bm.parentId, bm.id, bm.title, bm.url)
         } catch (error) {
             console.log(error)
             return Error(`error while create bookmark: $(error)`)
