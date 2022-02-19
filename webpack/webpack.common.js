@@ -32,6 +32,9 @@ module.exports = {
         ],
     },
     resolve: {
+        alias: {
+            src: srcDir,
+        },
         extensions: [".ts", ".tsx", ".js"],
     },
     plugins: [
