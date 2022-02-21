@@ -17,7 +17,7 @@ Typescript의 사용 목적은 "개발의 편리함"외에는 없습니다, js/t
 # Develop Guide
 ## Project Setting
 1. Clone project
-2. Run `npm install` (isntall dependencies)
+2. Run `npm install` (install dependencies)
 ## Local Test
 1. Run `npm run build` (build project)
 2. Upload built project to local chrome and debug
