@@ -30,7 +30,7 @@ export class BookmarkReadDto {
   }
 
   static fromEntity(bookmark : Bookmark){
-    if (bookmark.id === undefined)
+    if (typeof bookmark.id === 'undefined')
       throw new Error('Bookmark id is undefined')
     return new BookmarkReadDto(bookmark.parentId, bookmark.id, bookmark.title, bookmark.url);
   }
