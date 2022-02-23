@@ -29,9 +29,9 @@ export class BookmarkReadDto {
     return this._url;
   }
 
-  static fromEntity(bookmark : Bookmark){
+  static fromEntity(bookmark : Bookmark) : BookmarkReadDto | undefined{
     if (typeof bookmark.id === "undefined")
-      throw new Error("Bookmark id is undefined")
+      return undefined;
     return new BookmarkReadDto(bookmark.parentId, bookmark.id, bookmark.title, bookmark.url);
   }
 
