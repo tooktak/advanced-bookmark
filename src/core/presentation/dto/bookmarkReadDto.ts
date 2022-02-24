@@ -6,8 +6,8 @@ export class BookmarkReadDto {
   private _title: string;
   private _url?: string;
 
-  constructor(parentID: string | undefined, id: string, title: string, url: string | undefined) {
-    this._parentId = parentID
+  constructor(parentId: string | undefined, id: string, title: string, url: string | undefined) {
+    this._parentId = parentId
     this._id = id;
     this._title = title;
     this._url = url;
