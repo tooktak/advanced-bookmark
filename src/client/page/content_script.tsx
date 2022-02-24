@@ -1,5 +1,26 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import {Readability, isProbablyReaderable} from "@mozilla/readability";
+
+// for article extraction test
+// https://github.com/mozilla/readability
+if (isProbablyReaderable(document)) {
+  console.log("readable page");
+  const article = new Readability(document).parse();
+
+  console.log("title : " + article?.title);             //article title
+  console.log("content : " + article?.content);         //HTML string of processed article content
+  console.log("textContent : " + article?.textContent); //text content of the article, with all the HTML tags removed
+  console.log("length : " + article?.length);           //length of an article, in characters
+  console.log("excerpt : " + article?.excerpt);         //article description, or short excerpt from the content
+  console.log("byline : " + article?.byline);           //author metadata
+  console.log("dir : " + article?.dir);                 //content direction
+  console.log("siteName : " + article?.siteName);       //name of the site
+}
+else{
+  console.log("unreadable page");
+  console.log("title : " + document.title);
+}
 
 const ContentScript = () => {
   const [color, setColor] = useState<string>("");
