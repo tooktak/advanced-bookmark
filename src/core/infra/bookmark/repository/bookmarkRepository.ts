@@ -20,10 +20,9 @@ class BookmarkRepositoryImpl implements BookmarkRepository {
     async listAllBookmarks(): Promise<Bookmark[] | Error> {
         try {
             const bookmarks: chrome.bookmarks.BookmarkTreeNode[] = await chrome.bookmarks.search({})
-            const domainBookmarks: Bookmark[] = new Array(bookmarks.length)
-            console.log(bookmarks)
+            const domainBookmarks: Bookmark[] = [];
+            console.log(domainBookmarks);
             for (const bookmark of bookmarks) {
-                console.log(bookmark)
                 domainBookmarks.push(new Bookmark(bookmark.parentId, bookmark.id, bookmark.title, bookmark.url))
             }
             return domainBookmarks
