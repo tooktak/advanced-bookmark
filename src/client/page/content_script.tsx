@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import BookmarkList from "src/client/component/BookmarkList";
-import { Bookmark } from "src/core/domain/bookmark/bookmark";
-import { listAllBookmarks } from "src/core/presentation/bookmark/createBookmark";
+import "../style/reset.css";
+import "../style/content_script.css";
 
 const ContentScript = () => {
   return (
@@ -15,7 +15,7 @@ const render = () => {
     <React.StrictMode>
       <ContentScript />
     </React.StrictMode>,
-    document.getElementById("extension_react_root")
+    document.getElementById("advanced-bookmark-root")
   );
 };
 
@@ -24,7 +24,7 @@ const init = () => {
 
   if ($body) {
     const $extensionRoot = document.createElement("div");
-    $extensionRoot.setAttribute("id", "extension_react_root");
+    $extensionRoot.setAttribute("id", "advanced-bookmark-root");
     $body.insertAdjacentElement("beforeend", $extensionRoot);
     render();
   }
