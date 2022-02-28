@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import BookmarkList from "src/client/component/BookmarkList";
 
 const Popup = () => {
   const [count, setCount] = useState(0);
@@ -45,6 +46,7 @@ const Popup = () => {
         count up
       </button>
       <button onClick={changeBackground}>change background</button>
+      <BookmarkList />
     </>
   );
 };

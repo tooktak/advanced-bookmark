@@ -24,7 +24,7 @@
   },
 
   "permissions": [
-    "bookmarks", "storage"
+    "tabs" ,"bookmarks", "storage", "unlimitedStorage"
   ],
 
   "host_permissions": [

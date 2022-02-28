@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import BookmarkList from "src/client/component/BookmarkList";
 
 const Options = () => {
   const [color, setColor] = useState<string>("");
@@ -65,6 +66,7 @@ const Options = () => {
       </div>
       <div>{status}</div>
       <button onClick={saveOptions}>Save</button>
+      <BookmarkList />
     </>
   );
 };
