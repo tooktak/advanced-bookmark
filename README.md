@@ -17,9 +17,10 @@ Typescript의 사용 목적은 "개발의 편리함"외에는 없습니다, js/t
 # Develop Guide
 ## Project Setting
 1. Clone project
-2. Run `npm install` (install dependencies)
+2. Run `npm ci` (install dependencies)
 ## Local Test
-1. Run `npm run build` (build project)
+1-1. Run `npm run build` (build project)
+1-2. Run `npm run watch` (build project with hot reloading)
 2. Upload built project to local chrome and debug
 ## Lint
 1. install eslint
