@@ -18,10 +18,13 @@ Typescript의 사용 목적은 "개발의 편리함"외에는 없습니다, js/t
 ## Project Setting
 1. Clone project
 2. Run `npm ci` (install dependencies)
+> `npm install` 을 하지 않고 `npm ci` 를 하는 이유는 
+<br> `package.json` 과 `package-lock.json` 의 dependancy가 일치하지 않으면 
+<br> 종료하여 안정성을 지킬 수 있습니다.
 ## Local Test
-1-1. Run `npm run build` (build project)
-1-2. Run `npm run watch` (build project with hot reloading)
-2. Upload built project to local chrome and debug
+1. Run `npm run build` (build project)
+2. If you want build with hot reloading, Run `npm run watch`
+3. Upload built project to local chrome and debug
 ## Lint
 1. install eslint
 2. Run `eslint .`
