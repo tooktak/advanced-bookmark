@@ -14,8 +14,10 @@ class ContentTokenListExtractorImpl implements ContentTokenListExtractor {
         // TODO replce html-to-text with article-extraction lib
         const text: string = convert(body)
 
+        // eslint-disable-next-line
         const breakRegex = /(\r\n|\n|\r)/gm
         const breakRemovedText: string = text.replace(breakRegex, '')
+        // eslint-disable-next-line
         const asteriskRegex = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
         const asteriskRemovedText: string = breakRemovedText.replace(asteriskRegex, '')
         const tokens: string[] = asteriskRemovedText.split(' ')
