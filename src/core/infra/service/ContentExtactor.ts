@@ -1,6 +1,6 @@
 import {ContentTokenListExtractor} from "src/core/domain/service/ContentTokenListExtractor";
 
-const {convert} = require('html-to-text');
+import {convert} from 'html-to-text';
 
 class ContentTokenListExtractorImpl implements ContentTokenListExtractor {
     async extractContentTokenList(url: string): Promise<string[] | Error> {
