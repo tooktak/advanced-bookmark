@@ -1,33 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import BookmarkList from "src/client/component/BookmarkList";
-import "../style/reset.css";
-import "../style/content_script.css";
+import App from "src/client/component/contentScript/App";
+import styles from "./content_script.module.css";
 
-const ContentScript = () => {
-  return (
-    <BookmarkList />
-  );
-};
+class ContentScript {
+  private readonly $body = document.querySelector("body");
 
-const render = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <ContentScript />
-    </React.StrictMode>,
-    document.getElementById("advanced-bookmark-root")
-  );
-};
-
-const init = () => {
-  const $body = document.querySelector("body");
-
-  if ($body) {
-    const $extensionRoot = document.createElement("div");
-    $extensionRoot.setAttribute("id", "advanced-bookmark-root");
-    $body.insertAdjacentElement("beforeend", $extensionRoot);
-    render();
+  render() {
+    ReactDOM.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>,
+      document.getElementById(styles.advancedBookmarkRoot)
+    );
   }
-};
 
-init();
+  init() {
+    if (this.$body) {
+      const $appRoot = document.createElement("div");
+      $appRoot.setAttribute("id", styles.advancedBookmarkRoot);
+      $appRoot.setAttribute("class", styles.advancedBookmarkRoot);
+      this.$body.insertAdjacentElement("beforeend", $appRoot);
+      this.render();
+    }
+  }
+}
+
+window.addEventListener("load", () => {
+  const app = new ContentScript();
+  app.init();
+})
