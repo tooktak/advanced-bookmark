@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import BookmarkList from "src/client/component/BookmarkList";
+import BookmarkList from "src/client/component/contentScript/Bookmark/BookmarkList/BookmarkList";
 
 const Popup = () => {
   const [count, setCount] = useState(0);
