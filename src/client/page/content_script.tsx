@@ -19,7 +19,6 @@ class ContentScript {
     if (this.$body) {
       const $appRoot = document.createElement("div");
       $appRoot.setAttribute("id", styles.advancedBookmarkRoot);
-      $appRoot.setAttribute("class", styles.advancedBookmarkRoot);
       this.$body.insertAdjacentElement("beforeend", $appRoot);
       this.render();
     }
