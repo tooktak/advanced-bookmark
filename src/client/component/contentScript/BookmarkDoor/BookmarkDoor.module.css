@@ -1,12 +1,16 @@
 .BookmarkDoor {
-    display: block;
-    z-index: 2147483646;
     position: fixed;
+    z-index: 2147483646;
+    top: 0;
+
+    display: block;
+
+    transition: width 0.3s;
+
     width: 1px;
     height: 100%;
-    top: 0;
+
     background-color: rgba(0, 0, 0, 0.6);
-    transition: width 0.3s;
 }
 
 .BookmarkDoor:hover {
