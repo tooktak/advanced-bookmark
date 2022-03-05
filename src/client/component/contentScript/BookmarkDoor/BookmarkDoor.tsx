@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./BookmarkDoor.module.css";
 import { BookmarkContext } from "src/client/component/contentScript/App";
 
 const BookmarkDoor: React.FC = () => {
-  const { handleOpen } = useContext(BookmarkContext);
+  const { open, handleOpen } = useContext(BookmarkContext);
 
   return (
-    <div className={`${styles.BookmarkDoor}`} onClick={handleOpen}>
+    <div className={`${styles.BookmarkDoor} ${open ? styles.close : ''}`} onClick={handleOpen}>
       <span>{`>`}</span>
     </div>
   );

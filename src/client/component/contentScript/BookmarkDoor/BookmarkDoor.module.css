@@ -4,8 +4,9 @@
     top: 0;
 
     display: block;
+    opacity: 0;
 
-    transition: width 0.3s;
+    transition: opacity 0.3s, width 0.3s;
 
     width: 1px;
     height: 100%;
@@ -14,6 +15,7 @@
 }
 
 .BookmarkDoor:hover {
+    opacity: 1;
     width: 25px;
 }
 

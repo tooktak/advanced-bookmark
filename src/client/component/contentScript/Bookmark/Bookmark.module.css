@@ -5,8 +5,9 @@
     left: -300px;
 
     display: block;
+    opacity: 0;
 
-    transition: ease 0.2s;
+    transition: opacity 0.3s, ease 0.2s;
 
     -moz-box-shadow: -3px 0 5px 0 #555;
     -webkit-box-shadow: -3px 0 5px 0 #555;
@@ -19,4 +20,5 @@
 
 .open {
     left: 0px;
+    opacity: 1;
 }
