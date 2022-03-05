@@ -1,4 +1,6 @@
 .BookmarkDoor {
+    all: revert;
+
     position: fixed;
     z-index: 2147483646;
     top: 0;

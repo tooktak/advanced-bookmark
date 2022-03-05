@@ -1,4 +1,6 @@
 .bookmark {
+    all: revert;
+
     position: fixed;
     z-index: 2147483647;
     top: 0;
@@ -12,7 +14,7 @@
     -moz-box-shadow: -3px 0 5px 0 #555;
     -webkit-box-shadow: -3px 0 5px 0 #555;
     box-shadow: -3px 0 5px 0 #555;
-    width: 300px;
+    width: 0;
     height: 100%;
 
     background-color: white;
@@ -21,4 +23,5 @@
 .open {
     left: 0px;
     opacity: 1;
+    width: 300px;
 }
