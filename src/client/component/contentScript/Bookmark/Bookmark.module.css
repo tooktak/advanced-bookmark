@@ -1,0 +1,14 @@
+.bookmark {
+    position: relative;
+    width: 300px;
+    background: #fff;
+    box-shadow: 15px 0 35px rgb(0 0 0 / 12%);
+    height: 100%;
+    display: flex;
+    float: left;
+    speak: none;
+    flex-direction: column;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 2;
+}
