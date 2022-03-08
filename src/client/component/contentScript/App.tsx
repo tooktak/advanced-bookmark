@@ -1,25 +1,31 @@
 import React, { createContext, useState } from "react";
 import Bookmark from "./Bookmark/Bookmark";
-import BookmarkDoor from "./BookmarkDoor/BookmarkDoor";
+import BookmarkIndicator from "./BookmarkIndicator/BookmarkIndicator";
 
-export const BookmarkContext = createContext<any>({})
+type BookmarkOpen = {
+  open: boolean;
+  handleOpen(): void;
+  handleClose(): void;
+}
+
+export const BookmarkOpen = createContext<BookmarkOpen>({} as BookmarkOpen)
 
 const App: React.FC = () => {
-  const [bookmarkOpen, setBookmarkOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
-    setBookmarkOpen(true);
+    setOpen(true);
   }
 
   const handleClose = () => {
-    setBookmarkOpen(false);
+    setOpen(false);
   }
 
   return (
-    <BookmarkContext.Provider value={{open: bookmarkOpen, handleOpen, handleClose}}>
+    <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
       <Bookmark />
-      <BookmarkDoor />
-    </BookmarkContext.Provider>
+      <BookmarkIndicator />
+    </BookmarkOpen.Provider>
   );
 };
 

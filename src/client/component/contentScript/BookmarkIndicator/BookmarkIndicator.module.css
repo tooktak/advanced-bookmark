@@ -1,4 +1,4 @@
-.BookmarkDoor {
+.bookmarkIndicator {
     all: revert;
 
     position: fixed;
@@ -16,11 +16,7 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.BookmarkDoor:hover {
+.bookmarkIndicator:hover {
     opacity: 1;
     width: 25px;
 }
-
-/*.open {*/
-/*    width: 25px;*/
-/*}*/

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Bookmark } from "src/core/domain/bookmark/bookmark";
 import styles from "./BookmarkListItem.module.css"
 
-interface BookmarkListItemProps {
+type BookmarkListItemProps = {
   bookmark: Bookmark;
 }
 
