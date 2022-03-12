@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./Checkbox.module.css";
 import { CheckboxEmptyIcon, CheckboxFilledIcon } from "src/client/component/Common/Icon";
 
@@ -27,13 +27,13 @@ const Checkbox: React.FC<CheckboxProps> = ({checked = false, handleClick, id = "
   }
 
   return (
-    <label onClick={handleClick} className={`${styles.checkbox} ${getSize()}`}>
+    <label className={`${styles.checkbox} ${getSize()}`}>
       {checked ? (
         <CheckboxFilledIcon size={size} />
-      ) : (
+        ) : (
         <CheckboxEmptyIcon size={size}/>
       )}
-      <input type="checkbox" id={id} />
+      <input checked={checked} onChange={handleClick} type="checkbox" id={id} />
       <span className="checkbox_text">{text}</span>\
     </label>
   );
