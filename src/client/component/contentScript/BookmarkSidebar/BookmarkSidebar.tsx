@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styles from "./Bookmark.module.css";
+import styles from "./BookmarkSidebar.module.css";
 import BookmarkHeader from "./BookmarkHeader/BookmarkHeader";
 import BookmarkList from "./BookmarkList/BookmarkList";
 import BookmarkOption from "./BookmarkOption/BookmarkOption";
