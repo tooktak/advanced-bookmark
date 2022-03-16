@@ -9,6 +9,8 @@
     display: block;
     opacity: 0;
 
+    overflow-y: auto;
+
     transition: opacity 0.3s, ease 0.2s;
 
     -moz-box-shadow: -3px 0 5px 0 #555;
