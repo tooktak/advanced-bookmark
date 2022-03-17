@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import styles from "./App.module.css";
 import BookmarkSidebar from "./BookmarkSidebar/BookmarkSidebar";
 import BookmarkIndicator from "./BookmarkIndicator/BookmarkIndicator";
 
@@ -22,10 +23,12 @@ const App: React.FC = () => {
   }
 
   return (
-    <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
-      <BookmarkSidebar />
-      <BookmarkIndicator />
-    </BookmarkOpen.Provider>
+    <div className={styles.advancedBookmark}>
+      <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
+        <BookmarkSidebar />
+        <BookmarkIndicator />
+      </BookmarkOpen.Provider>
+    </div>
   );
 };
 
