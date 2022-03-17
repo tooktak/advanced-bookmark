@@ -8,11 +8,13 @@ type BookmarkListItemProps = {
 }
 
 const BookmarkListItem: React.FC<BookmarkListItemProps> = ({ bookmark }) => {
+  const url = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${bookmark.url}&size=16`;
+
   return (
     <li className={styles.bookmarkListItem}>
-      <a href={bookmark.url} title={bookmark.title} target="_parent">
+      <a href={bookmark.url} title={bookmark.title} target="_blank">
         <div>
-          <img src={`http://www.google.com/s2/favicons?domain_url=${bookmark.url}`} />
+          <img src={url} alt={bookmark.title} />
           <span>{bookmark.title}</span>
         </div>
       </a>
