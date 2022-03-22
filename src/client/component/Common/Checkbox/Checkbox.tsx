@@ -3,20 +3,20 @@ import styles from "./Checkbox.module.css";
 import { CheckboxEmptyIcon, CheckboxFilledIcon } from "src/client/component/Common/Icon";
 
 export enum CheckboxSize {
-  NORMAL = "1rem",
-  SMALL = "0.875rem",
-  BIG = "1.25rem"
+  SMALL = "16",
+  NORMAL = "18",
+  BIG = "24"
 }
 
 type CheckboxProps = {
   checked: boolean,
-  handleClick(): void,
+  onClick(): void | undefined,
   id: string,
   text: string,
   size?: CheckboxSize
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({checked = false, handleClick, id = "checkbox", text, size = CheckboxSize.NORMAL}) => {
+const Checkbox: React.FC<CheckboxProps> = ({ checked = false, onClick, id = "checkbox", text, size = CheckboxSize.NORMAL}) => {
   const getSize = () => {
     switch(size) {
       case CheckboxSize.SMALL:
@@ -33,8 +33,8 @@ const Checkbox: React.FC<CheckboxProps> = ({checked = false, handleClick, id = "
         ) : (
         <CheckboxEmptyIcon size={size}/>
       )}
-      <input checked={checked} onChange={handleClick} type="checkbox" id={id} />
-      <span className="checkbox_text">{text}</span>\
+      <input checked={checked} onChange={onClick} type="checkbox" id={id} />
+      <span>{text}</span>
     </label>
   );
 };
