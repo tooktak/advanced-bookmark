@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import styles from "./App.module.css";
 import BookmarkSidebar from "./BookmarkSidebar/BookmarkSidebar";
 import BookmarkIndicator from "./BookmarkIndicator/BookmarkIndicator";
 
@@ -14,10 +15,10 @@ type BookmarkListType = {
   getBookmarkList(): void;
 }
 
-type BookmarkSidebarOpen = {
+type BookmarkSidebarOpenState = {
   open: boolean;
-  handleOpen(): void;
-  handleClose(): void;
+  sidebarOpen(): void;
+  sidebarClose(): void;
 }
 
 type OrderBy = "ASC" | "DESC";
@@ -36,7 +37,7 @@ export const Store = {
   BookmarkOption: createContext<BookmarkOption>({} as BookmarkOption)
 }
 
-export const BookmarkOpen = createContext<BookmarkSidebarOpen>({} as BookmarkSidebarOpen)
+export const BookmarkSidebarOpen = createContext<BookmarkSidebarOpenState>({} as BookmarkSidebarOpenState)
 export const BookmarkList = createContext<BookmarkListType>({} as BookmarkListType)
 
 
@@ -56,11 +57,11 @@ const App: React.FC = () => {
     });
   }
 
-  const handleOpen = () => {
+  const sidebarOpen = () => {
     setOpen(true);
   }
 
-  const handleClose = () => {
+  const sidebarClose = () => {
     setOpen(false);
   }
 
@@ -90,14 +91,16 @@ const handleOptionOpen = () => {
   }, [])
 
   return (
-    <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
+    <BookmarkSidebarOpen.Provider value={{open, sidebarOpen, sidebarClose}}>
       <Store.BookmarkOption.Provider value={{open: optionOpen, showFolder, orderBy, handleOpen: handleOptionOpen, handleClose: handleOptionClose, handleShowFolder, handleOrderBy}}>
         <BookmarkList.Provider value={{bookmarkList, getBookmarkList}}>
-          <BookmarkSidebar />
-          <BookmarkIndicator />
+          <div className={styles.advancedBookmark}>
+            <BookmarkSidebar />
+            <BookmarkIndicator />
+          </div>
         </BookmarkList.Provider>
       </Store.BookmarkOption.Provider>
-    </BookmarkOpen.Provider>
+    </BookmarkSidebarOpen.Provider>
   );
 };
 

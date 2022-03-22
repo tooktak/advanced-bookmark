@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import BookmarkList from "src/client/component/contentScript/Bookmark/BookmarkList/BookmarkList";
+import BookmarkList from "src/client/component/contentScript/BookmarkSidebar/BookmarkList/BookmarkList";
 
 const Options = () => {
   const [color, setColor] = useState<string>("");
