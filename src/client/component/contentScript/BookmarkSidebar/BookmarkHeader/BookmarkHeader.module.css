@@ -1,3 +1,42 @@
 .bookmarkHeader {
-    color: red;
+    all: revert;
+
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: #333333;
+    color: #eeeeee;
+}
+
+.bookmarkHeader h1 {
+    margin-left: 5px;
+    margin-right: auto;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.bookmarkHeader h1 small {
+    margin-left: 3px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.bookmarkHeader a {
+    display: flex;
+    transition: background-color 0.3s;
+    opacity: 1;
+    align-items: center;
+    border-radius: 50px;
+    padding: 6px;
+    background: #333333;
+    cursor: pointer;
+    color: #eeeeee;
+}
+
+.bookmarkHeader a:hover {
+    background: #444444;
+}
+
+.bookmarkHeader a:active {
+    background: #555555;
 }
