@@ -1,23 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from './BookmarkOption.module.css';
 import Checkbox from "src/client/component/Common/Checkbox/Checkbox";
 import { ArrowIcon } from "src/client/component/Common/Icon";
-import { Store } from "src/client/component/contentScript/App";
+import { useBookmarkOption } from "src/client/context/UiContext";
+import { useBookmarkListState, useBookmarkListDispatch } from "src/client/context/BookmarkList";
 
 const BookmarkOption: React.FC = () => {
-  const { open, showFolder, orderBy, handleShowFolder, handleOrderBy } = useContext(Store.BookmarkOption);
+  const { open } = useBookmarkOption()
+  const { isFolder, orderBy } = useBookmarkListState();
+  const dispatch = useBookmarkListDispatch();
 
-
+  const toggleFolder = () => dispatch({ type: 'TOGGLE_FOLDER' });
+  const toggleOrderBy = () => dispatch({ type: "TOGGLE_ORDER_BY" });
 
   return (
     <div className={`${styles.bookmarkOption} ${open ? styles.open : ''}`}>
-      <a className={orderBy === "ASC" ? styles.asc : styles.desc} onClick={handleOrderBy}>
+      <a className={orderBy === "ASC" ? styles.asc : styles.desc} onClick={toggleOrderBy}>
         <ArrowIcon size="18" />
         <span>정렬</span>
       </a>
       <Checkbox
-        checked={showFolder}
-        onClick={handleShowFolder}
+        checked={isFolder}
+        onClick={toggleFolder}
         id="showFolder"
         text="폴더 보기"
       />

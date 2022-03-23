@@ -1,36 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Bookmark } from "src/core/domain/bookmark/bookmark";
-import BookmarkListItem from "./BookmarkListItem/BookmarkListItem";
+import React from "react";
 import styles from "./BookmarkList.module.css"
-import { Store } from "src/client/component/contentScript/App";
+import BookmarkListItem from "./BookmarkListItem/BookmarkListItem";
+import { useBookmarkListData } from "src/client/context/BookmarkList";
+import { useBookmarkOption } from "src/client/context/UiContext";
 
 const BookmarkList: React.FC = () => {
-  const [bookmarkList, setBookmarkList] = useState<Bookmark[] | Error>([]);
-  const {handleOpen, handleClose} = useContext(Store.BookmarkOption);
-
-  const init = () => {
-    // 북마크에 저장된 데이터 chrome storage 에서 불러오기
-    chrome.storage.local.get(['bookmark'], (result) => {
-      // storage 에서 불러온 데이터는 Object 형`태 => Bookmark 로 변환
-      const res = result.bookmark.map((e: { _parentId: string | undefined; _id: string | undefined; _title: string; _url: string | undefined; }) => new Bookmark(e._parentId, e._id, e._title, e._url));
-      setBookmarkList(res);
-    });
-  }
-
-  useEffect(() => {
-    init();
-  }, []);
+  const bookmarkList = useBookmarkListData();
+  const { toggleOpen } = useBookmarkOption();
 
   return (
     <ul className={styles.bookmarkList}>
-      <button onClick={init}>출력</button>
-      <button onClick={handleClose}>스크롤다운스크롤다운스크롤다운</button>
-      <button onClick={handleOpen}>스크롤업스크롤업스크롤업스크롤업</button>
+      <button onClick={toggleOpen}>스크롤토글</button>
       {bookmarkList instanceof Error ||
         bookmarkList
-          .filter((bookmark) => bookmark.url)
+          .filter((bookmark) => bookmark._url)
           .map((bookmark, idx) =>
-        (<BookmarkListItem key={`${idx}-${bookmark.id}-${bookmark.title}`} bookmark={bookmark} />)
+        (<BookmarkListItem key={`${idx}-${bookmark._id}-${bookmark._title}`} bookmark={bookmark} />)
       )}
     </ul>
   );

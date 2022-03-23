@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./BookmarkHeader.module.css";
-import { BookmarkList } from "src/client/component/contentScript/App";
 import { SearchIcon, SeeMoreIcon, SortIcon } from "src/client/component/Common/Icon";
+import { useBookmarkListData } from "src/client/context/BookmarkList";
 
 const BookmarkHeader: React.FC = () => {
-  const { bookmarkList } = useContext(BookmarkList);
+  const bookmarkList = useBookmarkListData();
 
   return (
     <div className={styles.bookmarkHeader}>
