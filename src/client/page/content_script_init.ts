@@ -3,6 +3,8 @@ import styles from "./content_script_init.module.css";
 class ContentScript {
   private readonly $body = document.querySelector("body");
   private readonly $head = document.querySelector("head");
+  private $iframe = document.createElement("iframe");
+  private $indicator = document.createElement("div");
 
   getBookmarkIcon() {
     return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,21 +13,21 @@ class ContentScript {
   }
 
   insertIndicator($iframe: HTMLIFrameElement) {
-    const $indicator = document.createElement("div");
-    $indicator.classList.add(styles.bookmarkIndicator);
-    $indicator.innerHTML = this.getBookmarkIcon();
-    $iframe.insertAdjacentElement("afterend", $indicator);
+    this.$indicator = document.createElement("div");
+    this.$indicator.classList.add(styles.bookmarkIndicator);
+    this.$indicator.innerHTML = this.getBookmarkIcon();
+    $iframe.insertAdjacentElement("afterend", this.$indicator);
   }
 
-  insertIframeTag() {
+  insertIframeContent() {
     if (this.$body) {
-      const $iframe = document.createElement("iframe");
       // $iframe.setAttribute("id", styles.advancedBookmarkRoot);
-      $iframe.setAttribute("src", chrome.runtime.getURL("../content_script.html"));
-      $iframe.setAttribute("aria-hidden", "true");
-      $iframe.setAttribute("data-theme", "default");
-      this.$body.insertAdjacentElement("beforeend", $iframe);
-      this.insertIndicator($iframe);
+      this.$iframe.setAttribute("src", chrome.runtime.getURL("../content_script.html"));
+      this.$iframe.setAttribute("aria-hidden", "true");
+      this.$iframe.setAttribute("data-theme", "default");
+      this.$iframe.classList.add(styles.contentScript);
+      this.$body.insertAdjacentElement("beforeend", this.$iframe);
+      this.insertIndicator(this.$iframe);
     }
   }
 
@@ -36,13 +38,27 @@ class ContentScript {
     }
   }
 
+  initEventListener () {
+    window.addEventListener('message', (e) => {
+      if(e.data.type === "ADVANCED_SIDEBAR_CLOSE") {
+        this.$iframe.classList.remove(styles.contentScriptOpen);
+      }
+    });
+
+    this.$indicator.addEventListener("click", () => {
+      this.$iframe.classList.add(styles.contentScriptOpen);
+      this.$iframe.contentWindow?.postMessage({ type: 'ADVANCED_SIDEBAR_OPEN' }, '*');
+    })
+  }
+
   render() {
-    this.insertIframeTag()
+    this.insertIframeContent()
     this.insertCssStyle()
   }
 
   init() {
     this.render();
+    this.initEventListener()
   }
 }
 
