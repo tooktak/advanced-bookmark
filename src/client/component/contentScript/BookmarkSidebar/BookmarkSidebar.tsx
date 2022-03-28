@@ -7,18 +7,18 @@ import Background from "src/client/component/Common/Background/Background"
 import { useBookmarkSidebar } from "src/client/context/UiContext";
 
 const BookmarkSidebar: React.FC = () => {
-  const { open, toggleOpen} = useBookmarkSidebar();
+  const { open, handleSidebarClose } = useBookmarkSidebar();
 
   return (
     <>
-      <aside className={`${styles.bookmarkSidebar} ${open ? styles.open : ''}`}>
+      <aside className={styles.bookmarkSidebar}>
         <BookmarkHeader />
         <BookmarkOption />
-        <div className={`${styles.listScroll}`}>
+        <div className={styles.listScroll}>
           <BookmarkList />
         </div>
       </aside>
-      <Background open={open} handleClose={toggleOpen} />
+      <Background open={open} handleClose={handleSidebarClose} />
     </>
   );
 };
