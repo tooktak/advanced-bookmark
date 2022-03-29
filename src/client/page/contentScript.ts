@@ -1,4 +1,4 @@
-import styles from "./ContentScript.module.css";
+import styles from "./contentScript.module.css";
 
 class ContentScript {
   private readonly $body = document.querySelector("body");
