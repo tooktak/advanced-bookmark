@@ -15,7 +15,7 @@
   "content_scripts": [
       {
           "matches": ["<all_urls>"],
-          "js": ["js/vendor.js", "js/content_script_init.js"]
+          "js": ["js/vendor.js", "js/contentScript.js"]
       }
   ],
 
@@ -33,7 +33,7 @@
 
   "web_accessible_resources": [
     {
-      "resources": ["content_script.html"],
+      "resources": ["advanced_sidebar.html"],
       "matches": ["<all_urls>"]
     }
   ]
