@@ -1,6 +1,4 @@
 .bookmarkHeader {
-    all: revert;
-
     display: flex;
     align-items: center;
     height: 40px;
@@ -17,8 +15,7 @@
 
 .bookmarkHeader h1 small {
     margin-left: 3px;
-    font-size: 0.9375rem;
-    font-weight: 500;
+    font-size: 0.875rem;
 }
 
 .bookmarkHeader a {

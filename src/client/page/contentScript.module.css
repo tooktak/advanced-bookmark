@@ -1,18 +1,22 @@
 .contentScript {
     position: fixed;
+    opacity: 0;
     top: 0;
     left: 0;
-    transition: transform 0.3s;
     transform: translateX(-300px);
     border: none;
     width: 300px;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    color-scheme: normal;
     z-index: 2147483646;
 }
 
 .contentScriptOpen {
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
     transform: translateX(0);
-    width: 100%;
+    width: calc(100% + 300px);
 }
 
 .bookmarkIndicator {
