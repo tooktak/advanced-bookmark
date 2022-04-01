@@ -1,9 +1,11 @@
 .bookmarkHeader {
+    position: relative;
     display: flex;
     align-items: center;
     height: 40px;
     background: #333333;
     color: #eeeeee;
+    z-index: 3;
 }
 
 .bookmarkHeader h1 {

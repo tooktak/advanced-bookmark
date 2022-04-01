@@ -1,6 +1,6 @@
 .checkbox {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     cursor: pointer;
     font-size: inherit;
     user-select: none;
@@ -8,6 +8,7 @@
 
 .checkbox span {
     margin-left: 3px;
+    font-size: inherit;
 }
 
 .checkbox input {

@@ -7,7 +7,7 @@ const BookmarkHeader: React.FC = () => {
   const bookmarkList = useBookmarkListData();
 
   return (
-    <div className={styles.bookmarkHeader}>
+    <header className={styles.bookmarkHeader}>
       <h1>{bookmarkList.length}<small>북마크</small></h1>
       <a>
         <SearchIcon />
@@ -18,7 +18,7 @@ const BookmarkHeader: React.FC = () => {
       <a>
         <SeeMoreIcon />
       </a>
-    </div>
+    </header>
   );
 };
 
