@@ -4,10 +4,10 @@ import BookmarkHeader from "./BookmarkHeader/BookmarkHeader";
 import BookmarkList from "./BookmarkList/BookmarkList";
 import BookmarkOption from "./BookmarkOption/BookmarkOption";
 import Background from "src/client/component/Common/Background/Background"
-import { BookmarkOpen } from "src/client/component/contentScript/App";
+import { BookmarkSidebarOpen } from "src/client/component/contentScript/App";
 
 const BookmarkSidebar: React.FC = () => {
-  const { open, handleClose } = useContext(BookmarkOpen);
+  const { open, sidebarClose } = useContext(BookmarkSidebarOpen);
 
   return (
     <>
@@ -18,7 +18,7 @@ const BookmarkSidebar: React.FC = () => {
           <BookmarkList />
         </div>
       </aside>
-      <Background open={open} handleClose={handleClose} />
+      <Background open={open} handleClose={sidebarClose} />
     </>
   );
 };
