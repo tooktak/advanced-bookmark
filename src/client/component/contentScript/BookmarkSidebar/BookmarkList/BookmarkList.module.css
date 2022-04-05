@@ -1,3 +1,6 @@
 .bookmarkList {
-    color: red;
+    all: revert;
+
+    list-style: none;
+    padding: 0;
 }

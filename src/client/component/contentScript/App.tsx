@@ -1,31 +1,34 @@
 import React, { createContext, useState } from "react";
+import styles from "./App.module.css";
 import BookmarkSidebar from "./BookmarkSidebar/BookmarkSidebar";
 import BookmarkIndicator from "./BookmarkIndicator/BookmarkIndicator";
 
-type BookmarkSidebarOpen = {
+type BookmarkSidebarOpenState = {
   open: boolean;
-  handleOpen(): void;
-  handleClose(): void;
+  sidebarOpen(): void;
+  sidebarClose(): void;
 }
 
-export const BookmarkOpen = createContext<BookmarkSidebarOpen>({} as BookmarkSidebarOpen)
+export const BookmarkSidebarOpen = createContext<BookmarkSidebarOpenState>({} as BookmarkSidebarOpenState)
 
 const App: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleOpen = () => {
+  const sidebarOpen = () => {
     setOpen(true);
   }
 
-  const handleClose = () => {
+  const sidebarClose = () => {
     setOpen(false);
   }
 
   return (
-    <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
-      <BookmarkSidebar />
-      <BookmarkIndicator />
-    </BookmarkOpen.Provider>
+    <div className={styles.advancedBookmark}>
+      <BookmarkSidebarOpen.Provider value={{open, sidebarOpen, sidebarClose}}>
+        <BookmarkSidebar />
+        <BookmarkIndicator />
+      </BookmarkSidebarOpen.Provider>
+    </div>
   );
 };
 

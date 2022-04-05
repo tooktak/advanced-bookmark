@@ -16,13 +16,15 @@ const BookmarkList: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log(bookmarkList);
-  }, [bookmarkList]);
+    init();
+  }, []);
 
   return (
     <ul className={styles.bookmarkList}>
-      <button onClick={init}>출력</button>
-      {bookmarkList instanceof Error || bookmarkList.map((bookmark, idx) =>
+      {bookmarkList instanceof Error ||
+        bookmarkList
+          .filter((bookmark) => bookmark.url)
+          .map((bookmark, idx) =>
         (<BookmarkListItem key={`${idx}-${bookmark.id}-${bookmark.title}`} bookmark={bookmark} />)
       )}
     </ul>
