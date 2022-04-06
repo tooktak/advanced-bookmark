@@ -14,7 +14,9 @@ const BookmarkSidebar: React.FC = () => {
       <aside className={`${styles.bookmarkSidebar} ${open ? styles.open : ''}`}>
         <BookmarkHeader />
         <BookmarkOption />
-        <BookmarkList />
+        <div className={`${styles.listScroll}`}>
+          <BookmarkList />
+        </div>
       </aside>
       <Background open={open} handleClose={sidebarClose} />
     </>
