@@ -16,8 +16,8 @@ type BookmarkListType = {
 
 type BookmarkSidebarOpen = {
   open: boolean;
-  handleOpen(): void;
-  handleClose(): void;
+  sidebarOpen(): void;
+  sidebarClose(): void;
 }
 
 export const BookmarkOpen = createContext<BookmarkSidebarOpen>({} as BookmarkSidebarOpen)
@@ -36,11 +36,11 @@ const App: React.FC = () => {
     });
   }
 
-  const handleOpen = () => {
+  const sidebarOpen = () => {
     setOpen(true);
   }
 
-  const handleClose = () => {
+  const sidebarClose = () => {
     setOpen(false);
   }
 
