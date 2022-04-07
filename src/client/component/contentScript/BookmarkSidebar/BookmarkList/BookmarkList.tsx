@@ -18,8 +18,8 @@ const BookmarkList: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log(bookmarkList);
-  }, [bookmarkList]);
+    init();
+  }, []);
 
   return (
     <ul className={styles.bookmarkList}>
