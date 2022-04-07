@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bookmark } from "src/core/domain/bookmark/bookmark";
 import BookmarkListItem from "./BookmarkListItem/BookmarkListItem";
 import styles from "./BookmarkList.module.css"
+import { Store } from "src/client/component/contentScript/App";
 
 const BookmarkList: React.FC = () => {
   const [bookmarkList, setBookmarkList] = useState<Bookmark[] | Error>([]);
+  const {handleOpen, handleClose} = useContext(Store.BookmarkOption);
 
   const init = () => {
     // 북마크에 저장된 데이터 chrome storage 에서 불러오기
@@ -21,10 +23,10 @@ const BookmarkList: React.FC = () => {
 
   return (
     <ul className={styles.bookmarkList}>
-      {bookmarkList instanceof Error ||
-        bookmarkList
-          .filter((bookmark) => bookmark.url)
-          .map((bookmark, idx) =>
+      <button onClick={init}>출력</button>
+      <button onClick={handleClose}>스크롤다운스크롤다운스크롤다운</button>
+      <button onClick={handleOpen}>스크롤업스크롤업스크롤업스크롤업</button>
+      {bookmarkList instanceof Error || bookmarkList.map((bookmark, idx) =>
         (<BookmarkListItem key={`${idx}-${bookmark.id}-${bookmark.title}`} bookmark={bookmark} />)
       )}
     </ul>

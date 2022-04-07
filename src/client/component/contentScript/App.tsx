@@ -20,12 +20,31 @@ type BookmarkSidebarOpen = {
   sidebarClose(): void;
 }
 
+type OrderBy = "ASC" | "DESC";
+
+type BookmarkOption = {
+  orderBy: OrderBy;
+  showFolder: boolean;
+  open: boolean;
+  handleOrderBy(): void;
+  handleShowFolder(): void;
+  handleOpen(): void;
+  handleClose(): void;
+}
+
+export const Store = {
+  BookmarkOption: createContext<BookmarkOption>({} as BookmarkOption)
+}
+
 export const BookmarkOpen = createContext<BookmarkSidebarOpen>({} as BookmarkSidebarOpen)
 export const BookmarkList = createContext<BookmarkListType>({} as BookmarkListType)
 
+
 const App: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [bookmarkList, setBookmarkList] = useState<Bookmark[]>([]);
+  const [showFolder, setShowFolder] = useState<boolean>(false);
+  const [orderBy, setOrderBy] = useState<OrderBy>("ASC");
+  const [optionOpen, setOptionOpen] = useState<boolean>(true);
 
   const getBookmarkList = () => {
     // 북마크에 저장된 데이터 chrome storage 에서 불러오기
@@ -44,16 +63,32 @@ const App: React.FC = () => {
     setOpen(false);
   }
 
-  useEffect(() => {
-    getBookmarkList();
-  }, [])
+  const handleOptionOpen = () => {
+    setOptionOpen(true)
+  }
+
+  const handleOptionClose = () => {
+    setOptionOpen(false)
+  }
+
+  const handleShowFolder = () => {
+    setShowFolder(!showFolder);
+  }
+
+  const handleOrderBy = () => {
+    if(orderBy === "ASC") {
+      setOrderBy("DESC");
+    } else {
+      setOrderBy("ASC");
+    }
+  }
 
   return (
     <BookmarkOpen.Provider value={{open, handleOpen, handleClose}}>
-      <BookmarkList.Provider value={{bookmarkList, getBookmarkList}}>
+      <Store.BookmarkOption.Provider value={{open: optionOpen, showFolder, orderBy, handleOpen: handleOptionOpen, handleClose: handleOptionClose, handleShowFolder, handleOrderBy}}>
         <BookmarkSidebar />
         <BookmarkIndicator />
-      </BookmarkList.Provider>
+      </Store.BookmarkOption.Provider>
     </BookmarkOpen.Provider>
   );
 };
