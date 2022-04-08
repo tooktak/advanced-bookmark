@@ -4,19 +4,19 @@
     position: fixed;
     z-index: 2147483646;
     top: 0;
-
-    display: block;
+    left: -24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-
-    transition: opacity 0.3s, width 0.3s;
-
-    width: 1px;
+    transition: opacity 0.3s, ease 0.2s;
+    width: 25px;
     height: 100%;
-
     background-color: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
 .bookmarkIndicator:hover {
     opacity: 1;
-    width: 25px;
+    transform: translateX(24px);
 }
