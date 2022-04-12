@@ -7,11 +7,11 @@ const pageDir = path.join(srcDir, "client/page");
 
 module.exports = {
   entry: {
-    popup: path.join(pageDir, "popup.tsx"),
-    options: path.join(pageDir, "options.tsx"),
-    background: path.join(srcDir, "background.ts"),
-    content_script: path.join(pageDir, "content_script.tsx"),
-    content_script_init: path.join(pageDir, "content_script_init.ts"),
+    Popup: path.join(pageDir, "Popup.tsx"),
+    Options: path.join(pageDir, "Options.tsx"),
+    Background: path.join(srcDir, "Background.ts"),
+    contentScript: path.join(pageDir, "contentScript.ts"),
+    AdvancedSidebar: path.join(pageDir, "AdvancedSidebar.tsx"),
   },
   output: {
     path: path.join(__dirname, "../dist/js"),
