@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Background.module.css";
 
 type BackgroundProps = {
-  open: boolean,
+  open?: boolean,
   handleClose(): void
 }
 
-const Background: React.FC<BackgroundProps> = ({ open, handleClose }) => {
+const Background: React.FC<BackgroundProps> = ({ open = true, handleClose }) => {
   return open ? (
     <div
       className={styles.background}

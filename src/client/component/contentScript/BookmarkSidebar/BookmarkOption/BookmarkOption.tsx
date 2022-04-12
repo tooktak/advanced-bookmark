@@ -24,6 +24,7 @@ const BookmarkOption: React.FC = () => {
         onClick={toggleFolder}
         id="showFolder"
         text="폴더 보기"
+        size="18"
       />
     </div>
   );

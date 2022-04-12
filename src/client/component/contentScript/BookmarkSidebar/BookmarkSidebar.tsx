@@ -11,6 +11,7 @@ const BookmarkSidebar: React.FC = () => {
 
   return (
     <>
+      <Background open={open} handleClose={handleSidebarClose} />
       <aside className={styles.bookmarkSidebar}>
         <BookmarkHeader />
         <BookmarkOption />
@@ -18,7 +19,7 @@ const BookmarkSidebar: React.FC = () => {
           <BookmarkList />
         </div>
       </aside>
-      <Background open={open} handleClose={handleSidebarClose} />
+      <div className={styles.background} onClick={handleSidebarClose} />
     </>
   );
 };

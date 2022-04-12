@@ -1,6 +1,4 @@
 .bookmarkListItem {
-    all: revert;
-
     display: flex;
     transition: background-color 0.3s;
     align-items: center;
@@ -28,9 +26,7 @@
 .bookmarkListItem a > div {
     display: flex;
     align-items: center;
-
     margin-right: auto;
-
     font-size: 0.75rem;
 }
 
