@@ -4,10 +4,9 @@
     position: fixed;
     z-index: 2147483647;
     top: 0;
-    left: -300px;
+    left: 0;
 
     display: block;
-    opacity: 0;
 
     overflow-y: auto;
 
@@ -59,7 +58,3 @@
     border-radius: 10px;
 }
 
-.open {
-    opacity: 1;
-    transform: translateX(300px);
-}

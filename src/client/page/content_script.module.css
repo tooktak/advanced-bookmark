@@ -1,4 +1,0 @@
-#advancedBookmarkRoot {
-    all: revert;
-    transition: width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s;
-}

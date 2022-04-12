@@ -11,6 +11,7 @@ module.exports = {
     options: path.join(pageDir, "options.tsx"),
     background: path.join(srcDir, "background.ts"),
     content_script: path.join(pageDir, "content_script.tsx"),
+    content_script_init: path.join(pageDir, "content_script_init.ts"),
   },
   output: {
     path: path.join(__dirname, "../dist/js"),

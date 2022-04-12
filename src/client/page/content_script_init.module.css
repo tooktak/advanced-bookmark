@@ -1,8 +1,23 @@
-.bookmarkIndicator {
-    all: revert;
-
+.contentScript {
     position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s;
+    transform: translateX(-300px);
+    border: none;
+    width: 300px;
+    height: 100vh;
     z-index: 2147483646;
+}
+
+.contentScriptOpen {
+    transform: translateX(0);
+    width: 100%;
+}
+
+.bookmarkIndicator {
+    position: fixed;
+    z-index: 2147483645;
     top: 0;
     left: -24px;
     display: flex;

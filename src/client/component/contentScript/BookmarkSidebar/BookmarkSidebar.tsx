@@ -1,24 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./BookmarkSidebar.module.css";
 import BookmarkHeader from "./BookmarkHeader/BookmarkHeader";
 import BookmarkList from "./BookmarkList/BookmarkList";
 import BookmarkOption from "./BookmarkOption/BookmarkOption";
 import Background from "src/client/component/Common/Background/Background"
-import { BookmarkSidebarOpen } from "src/client/component/contentScript/App";
+import { useBookmarkSidebar } from "src/client/context/UiContext";
 
 const BookmarkSidebar: React.FC = () => {
-  const { open, sidebarClose } = useContext(BookmarkSidebarOpen);
+  const { open, handleSidebarClose } = useBookmarkSidebar();
 
   return (
     <>
-      <aside className={`${styles.bookmarkSidebar} ${open ? styles.open : ''}`}>
+      <aside className={styles.bookmarkSidebar}>
         <BookmarkHeader />
         <BookmarkOption />
-        <div className={`${styles.listScroll}`}>
+        <div className={styles.listScroll}>
           <BookmarkList />
         </div>
       </aside>
-      <Background open={open} handleClose={sidebarClose} />
+      <Background open={open} handleClose={handleSidebarClose} />
     </>
   );
 };
