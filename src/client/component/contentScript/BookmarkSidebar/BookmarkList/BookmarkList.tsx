@@ -6,18 +6,19 @@ import { useBookmarkOption } from "src/client/context/UiContext";
 
 const BookmarkList: React.FC = () => {
   const bookmarkList = useBookmarkListData();
-  const { toggleOpen } = useBookmarkOption();
+  const { listAreaRef } = useBookmarkOption();
 
   return (
-    <ul className={styles.bookmarkList}>
-      <button onClick={toggleOpen}>스크롤토글</button>
-      {bookmarkList instanceof Error ||
-        bookmarkList
-          .filter((bookmark) => bookmark._url)
-          .map((bookmark, idx) =>
-        (<BookmarkListItem key={`${idx}-${bookmark._id}-${bookmark._title}`} bookmark={bookmark} />)
-      )}
-    </ul>
+    <div ref={listAreaRef} className={styles.listScroll}>
+      <ul className={styles.bookmarkList}>
+        {bookmarkList instanceof Error ||
+          bookmarkList
+            .filter((bookmark) => bookmark._url)
+            .map((bookmark, idx) =>
+          (<BookmarkListItem key={`${idx}-${bookmark._id}-${bookmark._title}`} bookmark={bookmark} />)
+        )}
+      </ul>
+    </div>
   );
 };
 

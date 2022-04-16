@@ -5,12 +5,8 @@ import { ArrowIcon } from "src/client/component/Common/Icon";
 import { useBookmarkOption } from "src/client/context/UiContext";
 import { useBookmarkListState, useBookmarkListDispatch } from "src/client/context/BookmarkList";
 
-type BookmarkOptionProps = {
-  option: boolean
-}
-
-const BookmarkOption: React.FC<BookmarkOptionProps> = ({ option }) => {
-  const { open } = useBookmarkOption()
+const BookmarkOption: React.FC = () => {
+  const { optionOpen } = useBookmarkOption();
   const { isFolder, orderBy } = useBookmarkListState();
   const dispatch = useBookmarkListDispatch();
 
@@ -18,7 +14,7 @@ const BookmarkOption: React.FC<BookmarkOptionProps> = ({ option }) => {
   const toggleOrderBy = () => dispatch({ type: "TOGGLE_ORDER_BY" });
 
   return (
-    <div className={`${styles.bookmarkOption} ${option ? styles.open : ''}`}>
+    <div className={`${styles.bookmarkOption} ${optionOpen ? styles.open : ''}`}>
       <a className={orderBy === "ASC" ? styles.asc : styles.desc} onClick={toggleOrderBy}>
         <ArrowIcon size="18" />
         <span>정렬</span>
