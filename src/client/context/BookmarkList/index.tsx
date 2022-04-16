@@ -4,7 +4,7 @@ import useBookmarkListState from './useBookmarkListState';
 import useBookmarkListDispatch from './useBookmarkListDispatch';
 
 type OrderBy = "ASC" | "DESC";
-type Index = Bookmark[] | BookmarkWithFolder[];
+type BookmarkList = Bookmark[] | BookmarkWithFolder[];
 type State = {
   orderBy: OrderBy,
   isFolder: boolean,
@@ -14,7 +14,7 @@ type State = {
 type Action = { type: "TOGGLE_ORDER_BY" } | { type: "TOGGLE_FOLDER" };
 type BookmarkListDispatch = Dispatch<Action>;
 
-export const BookmarkListData = createContext<Index | null>(null);
+export const BookmarkListData = createContext<BookmarkList | null>(null);
 export const BookmarkListState = createContext<State | null>(null);
 export const BookmarkListDispatch = createContext<BookmarkListDispatch | null>(null);
 
@@ -35,7 +35,7 @@ const reducer = (state: State, action: Action): State => {
 }
 
 const BookmarkList: React.FC = ({ children}) => {
-  const [bookmarkList, setBookmarkList] = useState<Index>([]);
+  const [bookmarkList, setBookmarkList] = useState<BookmarkList>([]);
   const [state, dispatch] = useReducer(reducer, {
     isFolder: false,
     orderBy: 'DESC',
@@ -56,6 +56,7 @@ const BookmarkList: React.FC = ({ children}) => {
     if(!state.isFolder) {
       getBookmarkList();
     }
+    console.log(bookmarkList);
   }, [state])
 
   return (

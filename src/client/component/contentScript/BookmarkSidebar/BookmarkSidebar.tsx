@@ -9,15 +9,15 @@ import { useBookmarkSidebar } from "src/client/context/UiContext";
 const BookmarkSidebar: React.FC = () => {
   const { open, handleSidebarClose } = useBookmarkSidebar();
 
+  console.log('sidebar');
+
   return (
     <>
       <Background open={open} handleClose={handleSidebarClose} />
       <aside className={styles.bookmarkSidebar}>
         <BookmarkHeader />
         <BookmarkOption />
-        <div className={styles.listScroll}>
-          <BookmarkList />
-        </div>
+        <BookmarkList />
       </aside>
       <div className={styles.background} onClick={handleSidebarClose} />
     </>
